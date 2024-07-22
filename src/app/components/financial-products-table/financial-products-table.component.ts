@@ -27,7 +27,7 @@ export class FinancialProductsTableComponent implements OnInit {
             date_revision: new Date(),
             description: 'Lorem Ipsum',
             id: '12345',
-            logo: '',
+            logo: 'https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg',
             name: 'Credit Card',
           });
         }
