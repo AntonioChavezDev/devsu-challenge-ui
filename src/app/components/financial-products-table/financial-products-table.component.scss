@@ -1,20 +1,37 @@
-table {
-  width: 100%;
-  border-collapse: collapse;
-  th,
-  td {
-    border: 1px solid #ddd;
-    padding: 8px;
+@import "../../../styles/variables";
+
+.financial-products-table {
+  padding: 1rem;
+  background-color: $background-color;
+  &--content {
+    width: 100%;
+    overflow-x: auto;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      thead {
+        border-bottom: 1px solid $gray-color;
+        background-color: $gray-color-light;
+        text-align: left;
+      }
+
+      th,
+      td {
+        text-align: left;
+        white-space: nowrap;
+        border-bottom: 1px solid $gray-color;
+        padding: 14px;
+      }
+    }
   }
-  tfoot td {
-    padding: 10px 20px;
-    background-color: #f1f1f1;
-  }
-  .footer-row {
+
+  &--footer {
+    padding: 20px 20px 30px 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-
+    
     .left,
     .right {
       display: inline-block;
