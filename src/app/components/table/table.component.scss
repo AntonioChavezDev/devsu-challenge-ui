@@ -1,0 +1,45 @@
+@import "../../../styles/variables";
+
+.custom-table {
+  &--wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  &--content {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+      border-bottom: 1px solid $gray-color;
+      background-color: $gray-color-light;
+      text-align: left;
+    }
+
+    th,
+    td {
+      text-align: left;
+      white-space: nowrap;
+      border-bottom: 1px solid $gray-color;
+      padding: 14px;
+    }
+
+    &-info {
+      background-color: $gray-color;
+      font-size: small;
+      color: $background-color;
+      border-radius: 12px;
+      padding-left: 6px;
+      padding-right: 6px;
+      text-align: center;
+    }
+
+    tbody {
+      img {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 2rem;
+      }
+    }
+  }
+}

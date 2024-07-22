@@ -16,6 +16,13 @@ section {
 }
 
 select {
-    padding: 0.5rem 1.5rem;
-    border-radius: 0.2rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.2rem;
+}
+
+input {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: solid 1px $gray-color;
+  margin: 0.5rem;
 }

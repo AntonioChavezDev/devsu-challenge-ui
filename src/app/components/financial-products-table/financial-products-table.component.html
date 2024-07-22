@@ -2,50 +2,12 @@
   <ng-container>
     {{ error }}
   </ng-container>
-  <div class="financial-products-table--content">
-    <table>
-      <thead>
-        <tr>
-          <th>Logo</th>
-          <th>Nombre del producto</th>
-          <th>
-            Descripción
-            <span class="financial-products-table--content-info">&#8505;</span>
-          </th>
-          <th>
-            Fecha de liberación
-            <span class="financial-products-table--content-info">&#8505;</span>
-          </th>
-          <th>
-            Fecha de reestructuración
-            <span class="financial-products-table--content-info">&#8505;</span>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        @if (financialProducts && financialProducts.length > 0) {
-        <tr *ngFor="let financialProduct of financialProducts">
-          <td>
-            <img
-              [src]="financialProduct.logo"
-              [alt]="'Logo_Producto_Financiero' + financialProduct.name"
-            />
-          </td>
-          <td>{{ financialProduct.name }}</td>
-          <td>{{ financialProduct.description }}</td>
-          <td>{{ financialProduct.date_release | date : "M/d/y" }}</td>
-          <td>{{ financialProduct.date_revision | date : "M/d/y" }}</td>
-        </tr>
-        } @else {
-        <tr>
-          <td colspan="5">Sin productos para mostrar.</td>
-        </tr>
-        }
-      </tbody>
-    </table>
-  </div>
+  <app-input-search (valueChanged)="search($event)"></app-input-search>
+
+  <app-table [model]="model"></app-table>
+
   <div class="financial-products-table--footer">
-    <div class="left">5 Resultados</div>
+    <div class="left">{{ model.rows.length || 0 }} Resultados</div>
     <div class="right">
       <select name="paginator" id="paginator">
         <option value="5">5</option>

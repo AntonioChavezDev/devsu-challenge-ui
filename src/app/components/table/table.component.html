@@ -1,0 +1,39 @@
+<div class="custom-table--wrapper">
+  <table class="custom-table--content">
+    <thead>
+      <tr>
+        <th *ngFor="let column of columns">
+          {{ column.title }}
+          @if(column?.enableIcon) {
+          <span class="custom-table--content-info">&#8505;</span>
+          }
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @if (rows && rows.length > 0) {
+      <tr *ngFor="let row of rows">
+        <ng-container *ngFor="let column of columns">
+          @if(column.columnType === 'img'){
+          <td>
+            <img
+              [src]="row[column.property]"
+              [alt]="'Logo_Producto_Financiero_' + column.title"
+            />
+          </td>
+          }@else if (column.columnType === 'date') {
+          <td>{{ getDate(row[column.property]) | date : "M/d/y" }}</td>
+          }@else {
+          <td>{{ row[column.property] }}</td>
+          }
+        </ng-container>
+      </tr>
+      } @else {
+      <tr>
+        <td colspan="5">Sin productos para mostrar.</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
