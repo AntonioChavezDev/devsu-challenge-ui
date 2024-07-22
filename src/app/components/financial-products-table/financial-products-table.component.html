@@ -1,0 +1,39 @@
+<ng-container>
+  {{ error }}
+</ng-container>
+<table>
+  <thead>
+    <tr>
+      <th>Logo</th>
+      <th>Nombre del producto</th>
+      <th>Descripción</th>
+      <th>Fecha de liberación</th>
+      <th>Fecha de reestructuración</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Logo</td>
+      <td>Nombre del producto</td>
+      <td>Descripción</td>
+      <td>Fecha de liberación</td>
+      <td>Fecha de reestructuración</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="5">
+        <div class="footer-row">
+          <div class="left">5 Resultados</div>
+          <div class="right">
+            <select name="paginator" id="paginator">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+            </select>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tfoot>
+</table>

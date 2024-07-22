@@ -1,0 +1,23 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  tfoot td {
+    padding: 10px 20px;
+    background-color: #f1f1f1;
+  }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .left,
+    .right {
+      display: inline-block;
+    }
+  }
+}
