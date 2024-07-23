@@ -12,8 +12,8 @@
     </thead>
 
     <tbody>
-      @if (rows && rows.length > 0) {
-      <tr *ngFor="let row of rows">
+      @if (paginatedItems && paginatedItems.length > 0) {
+      <tr *ngFor="let row of paginatedItems">
         <ng-container *ngFor="let column of columns">
           @if(column.columnType === 'img'){
           <td>
@@ -38,8 +38,8 @@
   </table>
 
   <app-paginator
-    *ngIf="model.enablePaginator && rows.length > 0"
-    [totalItems]="model.rows.length"
+    *ngIf="config.enablePaginator && rows.length > 0"
+    [totalItems]="rows.length"
     (pageChange)="onPageChange($event)"
     (itemsPerPageChange)="onItemsPerPageChange($event)"
   ></app-paginator>

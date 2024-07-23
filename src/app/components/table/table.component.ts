@@ -1,5 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { TableModel } from './models/table.interface';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
+import { Column, TableConfig } from './models/table.interface';
 import { CommonModule } from '@angular/common';
 import { PaginatorComponent } from '../paginator/paginator.component';
 
@@ -10,24 +16,16 @@ import { PaginatorComponent } from '../paginator/paginator.component';
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
 })
-export class TableComponent implements OnInit {
-  @Input() model: TableModel = {
-    columns: [],
-    rows: [],
+export class TableComponent implements OnInit, OnChanges {
+  @Input() config: TableConfig = {
     enablePaginator: true,
   };
+  @Input() columns: Column[] = [];
+  @Input() rows: any[] = [];
 
   paginatedItems: any[] = [];
   currentPage: number = 1;
   itemsPerPage: number = 5;
-
-  get columns() {
-    return this.model.columns;
-  }
-
-  get rows() {
-    return this.paginatedItems;
-  }
 
   getDate(date: String | Date | object): Date {
     if (date instanceof Date) {
@@ -41,7 +39,7 @@ export class TableComponent implements OnInit {
   private updatePaginatedProducts() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
-    this.paginatedItems = this.model.rows.slice(startIndex, endIndex);
+    this.paginatedItems = this.rows.slice(startIndex, endIndex);
   }
 
   onPageChange(page: number) {
@@ -54,6 +52,12 @@ export class TableComponent implements OnInit {
     this.updatePaginatedProducts();
   }
   //#endregion
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['rows']) {
+      this.updatePaginatedProducts();
+    }
+  }
 
   ngOnInit(): void {
     this.updatePaginatedProducts();

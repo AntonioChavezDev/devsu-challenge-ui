@@ -4,7 +4,7 @@ import { FinancialProduct } from '../../models/financial-product.interface';
 import { CommonModule } from '@angular/common';
 import { InputSearchComponent } from '../input-search/input-search.component';
 import { TableComponent } from '../table/table.component';
-import { TableModel } from '../table/models/table.interface';
+import { Column, TableConfig } from '../table/models/table.interface';
 
 @Component({
   selector: 'app-financial-products-table',
@@ -16,38 +16,38 @@ import { TableModel } from '../table/models/table.interface';
 export class FinancialProductsTableComponent implements OnInit {
   financialProducts: FinancialProduct[] = [];
   error: any;
-  model: TableModel = {
-    columns: [
-      {
-        property: 'logo',
-        title: 'Logo',
-        columnType: 'img',
-      },
-      {
-        property: 'name',
-        title: 'Nombre del producto',
-      },
-      {
-        property: 'description',
-        title: 'Descripción',
-        enableIcon: true,
-      },
-      {
-        property: 'date_release',
-        title: 'Fecha de liberación',
-        enableIcon: true,
-        columnType: 'date',
-      },
-      {
-        property: 'date_revision',
-        title: 'Fecha de reestructuración',
-        enableIcon: true,
-        columnType: 'date',
-      },
-    ],
-    rows: [],
+  config: TableConfig = {
     enablePaginator: true,
   };
+  columns: Column[] = [
+    {
+      property: 'logo',
+      title: 'Logo',
+      columnType: 'img',
+    },
+    {
+      property: 'name',
+      title: 'Nombre del producto',
+    },
+    {
+      property: 'description',
+      title: 'Descripción',
+      enableIcon: true,
+    },
+    {
+      property: 'date_release',
+      title: 'Fecha de liberación',
+      enableIcon: true,
+      columnType: 'date',
+    },
+    {
+      property: 'date_revision',
+      title: 'Fecha de reestructuración',
+      enableIcon: true,
+      columnType: 'date',
+    },
+  ];
+  rows: any[] = [];
 
   isLoading: boolean = false;
 
@@ -56,11 +56,11 @@ export class FinancialProductsTableComponent implements OnInit {
   search(searchValue: string) {
     searchValue = searchValue.toLowerCase();
     if (searchValue === '') {
-      this.model.rows = this.financialProducts;
+      this.rows = this.financialProducts;
       return;
     }
 
-    this.model.rows = this.financialProducts.filter(
+    this.rows = this.financialProducts.filter(
       (value: FinancialProduct) =>
         value.description.toLowerCase().includes(searchValue) ||
         value.id.toLowerCase().includes(searchValue) ||
@@ -84,7 +84,7 @@ export class FinancialProductsTableComponent implements OnInit {
             name: `Credit Card ${index + 1}`,
           });
         }
-        this.model.rows = this.financialProducts;
+        this.rows = this.financialProducts;
       },
       error: () => {
         this.error =

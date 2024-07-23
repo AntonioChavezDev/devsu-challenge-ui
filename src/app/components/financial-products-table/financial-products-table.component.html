@@ -7,6 +7,6 @@
   </ng-container>
   <app-input-search (valueChanged)="search($event)"></app-input-search>
 
-  <app-table [model]="model"></app-table>
+  <app-table [config]="config" [columns]="columns" [rows]="rows"></app-table>
   }
 </div>
