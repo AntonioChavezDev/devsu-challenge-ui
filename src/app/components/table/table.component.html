@@ -36,4 +36,11 @@
       }
     </tbody>
   </table>
+
+  <app-paginator
+    *ngIf="model.enablePaginator && rows.length > 0"
+    [totalItems]="model.rows.length"
+    (pageChange)="onPageChange($event)"
+    (itemsPerPageChange)="onItemsPerPageChange($event)"
+  ></app-paginator>
 </div>

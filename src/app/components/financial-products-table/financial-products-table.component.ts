@@ -49,6 +49,8 @@ export class FinancialProductsTableComponent implements OnInit {
     enablePaginator: true,
   };
 
+  isLoading: boolean = false;
+
   constructor(private financialProductService: FinancialProductsService) {}
 
   search(searchValue: string) {
@@ -67,18 +69,19 @@ export class FinancialProductsTableComponent implements OnInit {
   }
 
   private getFinancialProducts() {
+    this.isLoading = true;
     this.error = '';
     this.financialProductService.getFinancialProducts().subscribe({
       next: (value) => {
         //this.financialProducts = value;
-        for (let index = 0; index < 2; index++) {
+        for (let index = 0; index < 30; index++) {
           this.financialProducts.push({
             date_release: new Date(),
             date_revision: new Date(),
             description: 'Lorem Ipsum',
             id: '12345',
             logo: 'https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg',
-            name: 'Credit Card',
+            name: `Credit Card ${index + 1}`,
           });
         }
         this.model.rows = this.financialProducts;
@@ -86,6 +89,9 @@ export class FinancialProductsTableComponent implements OnInit {
       error: () => {
         this.error =
           'Ocurrió un error al obtener los resultados. Prueba nuevamente, por favor.';
+      },
+      complete: () => {
+        this.isLoading = false;
       },
     });
   }
