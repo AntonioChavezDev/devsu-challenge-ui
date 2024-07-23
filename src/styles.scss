@@ -12,7 +12,6 @@ body {
 section {
   margin: $margin-base;
   padding: $padding-base;
-  background-color: $section-color;
 }
 
 select {
@@ -24,5 +23,4 @@ input {
   padding: 0.5rem;
   border-radius: 0.5rem;
   border: solid 1px $gray-color;
-  margin: 0.5rem;
 }
