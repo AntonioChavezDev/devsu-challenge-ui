@@ -5,8 +5,14 @@
   <ng-container>
     {{ error }}
   </ng-container>
-  <app-input-search (valueChanged)="search($event)"></app-input-search>
+  <div class="financial-products-table--header">
+    <app-input-search (valueChanged)="search($event)"></app-input-search>
 
-  <app-table [config]="config" [columns]="columns" [rows]="rows"></app-table>
+    <app-button [text]="'Agregar'" [buttonType]="'primary'" (onClick)="onAddProductPressed()"></app-button>
+  </div>
+
+  <div class="financial-products-table--data">
+    <app-table [config]="config" [columns]="columns" [rows]="rows"></app-table>
+  </div>
   }
 </div>

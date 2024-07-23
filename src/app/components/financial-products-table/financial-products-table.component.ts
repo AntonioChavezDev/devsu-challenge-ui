@@ -5,11 +5,19 @@ import { CommonModule } from '@angular/common';
 import { InputSearchComponent } from '../input-search/input-search.component';
 import { TableComponent } from '../table/table.component';
 import { Column, TableConfig } from '../table/models/table.interface';
+import { ButtonComponent } from '../button/button.component';
+import { Router } from '@angular/router';
+import { MY_ROUTES } from '../../constants/my-routes.constants';
 
 @Component({
   selector: 'app-financial-products-table',
   standalone: true,
-  imports: [CommonModule, InputSearchComponent, TableComponent],
+  imports: [
+    CommonModule,
+    InputSearchComponent,
+    TableComponent,
+    ButtonComponent,
+  ],
   templateUrl: './financial-products-table.component.html',
   styleUrl: './financial-products-table.component.scss',
 })
@@ -51,7 +59,10 @@ export class FinancialProductsTableComponent implements OnInit {
 
   isLoading: boolean = false;
 
-  constructor(private financialProductService: FinancialProductsService) {}
+  constructor(
+    private financialProductService: FinancialProductsService,
+    private router: Router
+  ) {}
 
   search(searchValue: string) {
     searchValue = searchValue.toLowerCase();
@@ -94,6 +105,10 @@ export class FinancialProductsTableComponent implements OnInit {
         this.isLoading = false;
       },
     });
+  }
+
+  onAddProductPressed() {
+    this.router.navigate([MY_ROUTES.CREATE_FINANCIAL_PRODUCT]);
   }
 
   ngOnInit(): void {
