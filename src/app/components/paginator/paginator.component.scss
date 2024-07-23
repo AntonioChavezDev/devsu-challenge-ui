@@ -1,0 +1,21 @@
+@import "../../../styles/variables";
+
+.paginator {
+  padding: 20px 20px 30px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &--pages {
+    button {
+      background-color: transparent;
+      border: 0;
+      color: $gray-color;
+      cursor: pointer;
+
+      &:disabled {
+        cursor: auto;
+      }
+    }
+  }
+}

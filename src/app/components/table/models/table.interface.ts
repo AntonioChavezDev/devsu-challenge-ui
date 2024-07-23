@@ -1,6 +1,4 @@
-export interface TableModel {
-  columns: Column[];
-  rows: any[];
+export interface TableConfig {
   enablePaginator?: boolean;
 }
 

@@ -1,19 +1,12 @@
 <div class="financial-products-table">
+  @if(isLoading){
+  <span>Loading...</span>
+  }@else {
   <ng-container>
     {{ error }}
   </ng-container>
   <app-input-search (valueChanged)="search($event)"></app-input-search>
 
-  <app-table [model]="model"></app-table>
-
-  <div class="financial-products-table--footer">
-    <div class="left">{{ model.rows.length || 0 }} Resultados</div>
-    <div class="right">
-      <select name="paginator" id="paginator">
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="20">20</option>
-      </select>
-    </div>
-  </div>
+  <app-table [config]="config" [columns]="columns" [rows]="rows"></app-table>
+  }
 </div>

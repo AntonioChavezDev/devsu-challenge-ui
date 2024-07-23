@@ -1,0 +1,27 @@
+<div class="paginator">
+  <div class="paginator--counter">{{ totalItems }} Resultados</div>
+
+  <div class="paginator--pages">
+    <button (click)="setPage(currentPage - 1)" [disabled]="currentPage === 1">
+      &lt;
+    </button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button
+      (click)="setPage(currentPage + 1)"
+      [disabled]="currentPage === totalPages"
+    >
+      &gt;
+    </button>
+  </div>
+
+  <div class="paginator--size">
+    <select
+      name="paginator"
+      id="paginator"
+      (change)="setItemsPerPage($event)"
+      [value]="itemsPerPage"
+    >
+      <option *ngFor="let size of pageSizes" [value]="size">{{ size }}</option>
+    </select>
+  </div>
+</div>
