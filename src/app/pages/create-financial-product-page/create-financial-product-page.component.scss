@@ -7,6 +7,10 @@
   margin: 0 16%;
   background-color: $section-color;
 
+  h1 {
+    text-align: center;
+  }
+
   & > * {
     width: 100%;
   }
