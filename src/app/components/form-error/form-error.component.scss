@@ -1,0 +1,7 @@
+@import "../../../styles/variables";
+
+.form-error {
+  &--text {
+    color: $error-color;
+  }
+}

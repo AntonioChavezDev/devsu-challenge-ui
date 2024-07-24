@@ -11,7 +11,10 @@ import { CommonModule } from '@angular/common';
 })
 export class ButtonComponent {
   @Input() text: string = '';
-  @Input() buttonType: ButtonType = 'standard';
+  @Input() buttonRole: ButtonType = 'standard';
+  @Input() disabled: boolean = false;
+  @Input() isLoading: boolean = false;
+  @Input() type: 'text' | 'submit' = 'text';
 
   @Output() onClick = new EventEmitter();
 
@@ -20,6 +23,6 @@ export class ButtonComponent {
   get classes(): string {
     const baseClass = 'button';
 
-    return `${baseClass} button-${this.buttonType}`;
+    return `${baseClass} button-${this.buttonRole}`;
   }
 }

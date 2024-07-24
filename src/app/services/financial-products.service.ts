@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { FinancialProduct } from '../models/financial-product.interface';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,11 +7,22 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class FinancialProductsService {
-  readonly baseUrl = 'bp/';
+  readonly baseUrl = 'bp/products';
 
   constructor(private readonly http: HttpClient) {}
 
+  create(financialProduct: FinancialProduct) {
+    return this.http.post<FinancialProduct[]>(
+      `${this.baseUrl}`,
+      financialProduct
+    );
+  }
+
   getFinancialProducts(): Observable<FinancialProduct[]> {
-    return this.http.get<FinancialProduct[]>(`${this.baseUrl}products`);
+    return this.http.get<FinancialProduct[]>(`${this.baseUrl}`);
+  }
+
+  checkIdExists(id: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.baseUrl}/verification/${id}`);
   }
 }

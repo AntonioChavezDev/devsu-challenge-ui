@@ -1,1 +1,68 @@
-<p>financial-product-form works!</p>
+<form class="financial-product-form" [formGroup]="form">
+  <div class="financial-product-form--group">
+    <label for="id" class="financial-product-form--group-label">ID</label>
+    <input
+      formControlName="id"
+      class="financial-product-form--group-field"
+      id="id"
+    />
+    <app-form-error [control]="form.controls['id']"></app-form-error>
+  </div>
+
+  <div class="financial-product-form--group">
+    <label for="name" class="financial-product-form--group-label">Nombre</label>
+    <input
+      formControlName="name"
+      class="financial-product-form--group-field"
+      id="name"
+    />
+    <app-form-error [control]="form.controls['name']"></app-form-error>
+  </div>
+
+  <div class="financial-product-form--group">
+    <label for="description" class="financial-product-form--group-label"
+      >Descripción</label
+    >
+    <input
+      formControlName="description"
+      class="financial-product-form--group-field"
+      id="description"
+    />
+    <app-form-error [control]="form.controls['description']"></app-form-error>
+  </div>
+
+  <div class="financial-product-form--group">
+    <label for="logo" class="financial-product-form--group-label">Logo</label>
+    <input
+      formControlName="logo"
+      class="financial-product-form--group-field"
+      id="logo"
+    />
+    <app-form-error [control]="form.controls['logo']"></app-form-error>
+  </div>
+
+  <div class="financial-product-form--group">
+    <label for="dateRelease" class="financial-product-form--group-label"
+      >Fecha de Liberación</label
+    >
+    <input
+      formControlName="dateRelease"
+      class="financial-product-form--group-field"
+      id="dateRelease"
+      placeholder="DD/MM/AAAA"
+    />
+    <app-form-error [control]="form.controls['dateRelease']"></app-form-error>
+  </div>
+
+  <div class="financial-product-form--group">
+    <label for="dateRevision" class="financial-product-form--group-label"
+      >Fecha de Revisión</label
+    >
+    <input
+      formControlName="dateRevision"
+      class="financial-product-form--group-field"
+      id="dateRevision"
+    />
+    <app-form-error [control]="form.controls['dateRevision']"></app-form-error>
+  </div>
+</form>

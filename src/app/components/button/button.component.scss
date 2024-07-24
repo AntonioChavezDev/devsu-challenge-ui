@@ -19,4 +19,8 @@
     background-color: $gray-color;
     color: whitesmoke;
   }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
