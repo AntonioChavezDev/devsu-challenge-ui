@@ -1,0 +1,13 @@
+@import "../styles/variables";
+
+header {
+  width: 100%;
+  background-color: $section-color;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+
+  h1 {
+    text-align: center;
+    margin: 0;
+  }
+}

@@ -5,8 +5,12 @@ body {
   font-family: $font-stack;
   font-size: $font-size-base;
   color: $text-color;
-  padding: $padding-base;
   background-color: $background-color;
+  margin: 0;
+}
+
+.container {
+  padding: $padding-base;
 }
 
 section {
