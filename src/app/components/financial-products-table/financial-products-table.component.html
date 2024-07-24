@@ -9,11 +9,6 @@
     <app-input-search (valueChanged)="search($event)"></app-input-search>
 
     <app-button
-      [text]="'Editar'"
-      [buttonRole]="'secondary'"
-      (onClick)="onEditProductPressed()"
-    ></app-button>
-    <app-button
       [text]="'Agregar'"
       [buttonRole]="'primary'"
       (onClick)="onAddProductPressed()"
@@ -26,6 +21,7 @@
       [config]="config"
       [columns]="columns"
       [rows]="rows"
+      (onEditClick)="onEditProductPressed($event)"
     ></app-table>
   </div>
   }

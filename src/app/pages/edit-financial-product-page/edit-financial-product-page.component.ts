@@ -61,7 +61,6 @@ export class EditFinancialProductPageComponent implements OnInit {
     this.route.queryParams.subscribe((params: any) => {
       if (params['data']) {
         this.financialProduct = JSON.parse(params['data']) as FinancialProduct;
-        console.log(this.financialProduct);
       }
     });
   }

@@ -26,6 +26,7 @@ export class FinancialProductsTableComponent implements OnInit {
   error: any;
   config: TableConfig = {
     enablePaginator: true,
+    enableActions: true,
   };
   columns: Column[] = [
     {
@@ -92,16 +93,14 @@ export class FinancialProductsTableComponent implements OnInit {
           'Ocurrió un error al obtener los resultados. Prueba nuevamente, por favor.';
       },
       complete: () => {
-        console.log(this.rows);
         this.isLoading = false;
       },
     });
   }
 
-  onEditProductPressed(product?: FinancialProduct) {
-    product = this.financialProducts[0];
+  onEditProductPressed(financialProduct: FinancialProduct) {
     this.router.navigate([MY_ROUTES.EDIT_FINANCIAL_PRODUCT], {
-      queryParams: { data: JSON.stringify(product) },
+      queryParams: { data: JSON.stringify(financialProduct) },
     });
   }
 

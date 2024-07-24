@@ -1,5 +1,6 @@
 export interface TableConfig {
   enablePaginator?: boolean;
+  enableActions?: boolean;
 }
 
 export interface Column {
