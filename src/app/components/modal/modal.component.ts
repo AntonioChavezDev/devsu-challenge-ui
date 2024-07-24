@@ -39,6 +39,8 @@ export class ModalComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.modalSubscription.unsubscribe();
+    if (this.modalSubscription) {
+      this.modalSubscription.unsubscribe();
+    }
   }
 }

@@ -42,6 +42,7 @@ export class CreateFinancialProductPageComponent {
         next: () => (this.message = 'Registro guardado con éxito!'),
         error: () => {
           this.message = 'Ha ocurrido un error';
+          this.isLoading = false;
         },
         complete: () => {
           this.isLoading = false;

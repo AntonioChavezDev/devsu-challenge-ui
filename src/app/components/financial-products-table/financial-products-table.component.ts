@@ -98,6 +98,7 @@ export class FinancialProductsTableComponent implements OnInit {
       error: () => {
         this.error =
           'Ocurrió un error al obtener los resultados. Prueba nuevamente, por favor.';
+        this.isLoading = false;
       },
       complete: () => {
         this.isLoading = false;

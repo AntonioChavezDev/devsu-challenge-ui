@@ -6,7 +6,7 @@
     "start": "ng serve --proxy-config src/proxy.conf.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "ng test --code-coverage=true",
     "test-headless": "ng test --watch=false --browsers=ChromeHeadless --code-coverage=true"
   },
   "private": true,
@@ -24,7 +24,7 @@
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^18.0.3",
+    "@angular-devkit/build-angular": "^18.1.1",
     "@angular/cli": "^18.0.3",
     "@angular/compiler-cli": "^18.0.0",
     "@types/jasmine": "~5.1.0",
