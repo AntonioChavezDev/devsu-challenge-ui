@@ -10,6 +10,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class DropdownMenuComponent {
   isOpen = false;
   @Output() onEditClick = new EventEmitter();
+  @Output() onDeleteClick = new EventEmitter();
 
   toggleDropdown() {
     this.isOpen = !this.isOpen;

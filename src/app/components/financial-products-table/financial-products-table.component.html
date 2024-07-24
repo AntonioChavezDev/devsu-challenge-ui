@@ -22,7 +22,10 @@
       [columns]="columns"
       [rows]="rows"
       (onEditClick)="onEditProductPressed($event)"
+      (onDeleteClick)="onDeleteProductPressed($event)"
     ></app-table>
   </div>
   }
 </div>
+
+<app-delete-product [productToDelete]="productToDelete"></app-delete-product>

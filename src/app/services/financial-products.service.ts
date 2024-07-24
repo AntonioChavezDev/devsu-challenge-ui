@@ -30,6 +30,10 @@ export class FinancialProductsService {
     );
   }
 
+  delete(id: string) {
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+
   checkIdExists(id: string): Observable<boolean> {
     return this.http.get<boolean>(`${this.baseUrl}/verification/${id}`);
   }

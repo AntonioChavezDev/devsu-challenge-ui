@@ -1,0 +1,24 @@
+@if(isOpen){
+<div class="modal-backdrop"></div>
+<div class="modal">
+  <div class="modal-body">
+    <ng-content></ng-content>
+  </div>
+  <div class="modal-footer">
+    <app-button
+      [text]="'Cancelar'"
+      [buttonRole]="'secondary'"
+      [isLoading]="isLoading"
+      (onClick)="onClose()"
+    >
+    </app-button>
+    <app-button
+      [text]="'Confirmar'"
+      [buttonRole]="'primary'"
+      (onClick)="onConfirm.emit()"
+      [isLoading]="isLoading"
+    >
+    </app-button>
+  </div>
+</div>
+}

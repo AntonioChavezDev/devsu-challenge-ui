@@ -8,6 +8,9 @@ import { Column, TableConfig } from '../table/models/table.interface';
 import { ButtonComponent } from '../button/button.component';
 import { Router } from '@angular/router';
 import { MY_ROUTES } from '../../constants/my-routes.constants';
+import { ModalComponent } from '../modal/modal.component';
+import { ModalService } from '../../services/modal.service';
+import { DeleteFinancialProductComponent } from '../delete-financial-product/delete-financial-product.component';
 
 @Component({
   selector: 'app-financial-products-table',
@@ -17,6 +20,8 @@ import { MY_ROUTES } from '../../constants/my-routes.constants';
     InputSearchComponent,
     TableComponent,
     ButtonComponent,
+    ModalComponent,
+    DeleteFinancialProductComponent,
   ],
   templateUrl: './financial-products-table.component.html',
   styleUrl: './financial-products-table.component.scss',
@@ -59,10 +64,12 @@ export class FinancialProductsTableComponent implements OnInit {
   rows: any[] = [];
 
   isLoading: boolean = false;
+  productToDelete!: FinancialProduct;
 
   constructor(
     private financialProductService: FinancialProductsService,
-    private router: Router
+    private router: Router,
+    private modalService: ModalService
   ) {}
 
   search(searchValue: string) {
@@ -102,6 +109,11 @@ export class FinancialProductsTableComponent implements OnInit {
     this.router.navigate([MY_ROUTES.EDIT_FINANCIAL_PRODUCT], {
       queryParams: { data: JSON.stringify(financialProduct) },
     });
+  }
+
+  onDeleteProductPressed(financialProduct: FinancialProduct) {
+    this.productToDelete = financialProduct;
+    this.modalService.openModal();
   }
 
   onAddProductPressed() {

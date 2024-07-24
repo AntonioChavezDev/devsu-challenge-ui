@@ -1,0 +1,10 @@
+<app-modal
+  (closeModal)="onModalClose()"
+  (onConfirm)="deleteProduct()"
+  [isLoading]="isLoading"
+>
+  <p>
+    ¿Estás seguro que deseas eliminar el producto {{ productToDelete?.name }}?
+  </p>
+  <span>{{ isLoading ? "Loading..." : message }}</span>
+</app-modal>

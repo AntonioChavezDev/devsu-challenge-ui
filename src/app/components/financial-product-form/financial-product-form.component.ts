@@ -72,8 +72,8 @@ export class FinancialProductFormComponent implements OnInit, OnDestroy {
         Validators.maxLength(10),
       ],
       asyncValidators: this.editMode
-        ? [this.idExistsValidator.validate.bind(this.idExistsValidator)]
-        : [],
+        ? []
+        : [this.idExistsValidator.validate.bind(this.idExistsValidator)],
       updateOn: 'change',
     });
 
@@ -93,15 +93,20 @@ export class FinancialProductFormComponent implements OnInit, OnDestroy {
     ]);
 
     const dateReleaseControl = new FormControl(
-      transformDateFormat(new Date(this.product?.date_release).toISOString()) ||
-        '',
+      this.product?.date_release
+        ? transformDateFormat(
+            new Date(this.product?.date_release).toISOString()
+          )
+        : '',
       [Validators.required, dateValidator()]
     );
 
     const dateRevisionControl = new FormControl(
-      transformDateFormat(
-        new Date(this.product?.date_revision).toISOString()
-      ) || '',
+      this.product?.date_revision
+        ? transformDateFormat(
+            new Date(this.product?.date_revision).toISOString()
+          )
+        : '',
       [Validators.required]
     );
 
