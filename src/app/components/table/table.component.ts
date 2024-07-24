@@ -22,6 +22,7 @@ export class TableComponent implements OnInit, OnChanges {
   };
   @Input() columns: Column[] = [];
   @Input() rows: any[] = [];
+  @Input() isLoading: boolean = false;
 
   paginatedItems: any[] = [];
   currentPage: number = 1;
@@ -39,7 +40,11 @@ export class TableComponent implements OnInit, OnChanges {
   private updatePaginatedProducts() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
-    this.paginatedItems = this.rows.slice(startIndex, endIndex);
+    if (Array.isArray(this.rows)) {
+      this.paginatedItems = this.rows.slice(startIndex, endIndex);
+    } else {
+      this.paginatedItems = [];
+    }
   }
 
   onPageChange(page: number) {

@@ -1,0 +1,34 @@
+<section class="edit-financial-product-page">
+  <h1 class="edit-financial-product-page--title">Edición de Producto Financiero</h1>
+
+  <div class="separator"></div>
+
+  <div class="edit-financial-product-page--form">
+    <app-financial-product-form
+      #financialProductForm
+      [product]="financialProduct"
+    ></app-financial-product-form>
+  </div>
+
+  <span class="edit-financial-product-page--feedback">{{ message }}</span>
+
+  <div class="edit-financial-product-page--actions">
+    <app-button
+      (onClick)="financialProductForm.resetForm()"
+      type="text"
+      [text]="'Reiniciar'"
+      [buttonRole]="'secondary'"
+    ></app-button>
+
+    <app-button
+      (onClick)="editProduct()"
+      type="submit"
+      [text]="'Enviar'"
+      [buttonRole]="'primary'"
+      [disabled]="financialProductForm.form.invalid"
+      [isLoading]="
+        isLoading || financialProductForm.form.controls['id'].pending
+      "
+    ></app-button>
+  </div>
+</section>

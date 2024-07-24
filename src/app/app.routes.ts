@@ -24,6 +24,13 @@ export const routes: Routes = [
             './pages/create-financial-product-page/create-financial-product-page.component'
           ).then((mod) => mod.CreateFinancialProductPageComponent),
       },
+      {
+        path: MY_ROUTES.EDIT,
+        loadComponent: () =>
+          import(
+            './pages/edit-financial-product-page/edit-financial-product-page.component'
+          ).then((mod) => mod.EditFinancialProductPageComponent),
+      },
     ],
   },
 ];

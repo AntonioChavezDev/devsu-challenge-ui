@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { FinancialProduct } from '../models/financial-product.interface';
 import { HttpClient } from '@angular/common/http';
+import { EditFinancialProduct } from '../models/edit-financial-product.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,13 @@ export class FinancialProductsService {
 
   getFinancialProducts(): Observable<FinancialProduct[]> {
     return this.http.get<FinancialProduct[]>(`${this.baseUrl}`);
+  }
+
+  update(id: string, financialProduct: EditFinancialProduct) {
+    return this.http.put<FinancialProduct[]>(
+      `${this.baseUrl}/${id}`,
+      financialProduct
+    );
   }
 
   checkIdExists(id: string): Observable<boolean> {

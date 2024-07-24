@@ -1,5 +1,8 @@
 <div class="custom-table--wrapper">
-  <table class="custom-table--content">
+  @if(isLoading){
+  <span>Loading...</span>
+  }@else {
+  <table class="custom-table--content" *ngIf="!isLoading">
     <thead>
       <tr>
         <th *ngFor="let column of columns">
@@ -43,4 +46,5 @@
     (pageChange)="onPageChange($event)"
     (itemsPerPageChange)="onItemsPerPageChange($event)"
   ></app-paginator>
+  }
 </div>
