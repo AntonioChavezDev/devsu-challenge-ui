@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
 import { FormErrorComponent } from '../form-error/form-error.component';
 import { IdExistsValidator } from '../../validators/id-exists.validator';
 import { CommonModule } from '@angular/common';
+import { transformDateFormat } from '../../utils/date.util';
 
 @Component({
   selector: 'app-financial-product-form',
@@ -25,6 +26,7 @@ export class FinancialProductFormComponent implements OnInit, OnDestroy {
   @Input() product!: FinancialProduct;
 
   private subscription!: Subscription;
+  editMode: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -69,9 +71,9 @@ export class FinancialProductFormComponent implements OnInit, OnDestroy {
         Validators.minLength(3),
         Validators.maxLength(10),
       ],
-      asyncValidators: [
-        this.idExistsValidator.validate.bind(this.idExistsValidator),
-      ],
+      asyncValidators: this.editMode
+        ? [this.idExistsValidator.validate.bind(this.idExistsValidator)]
+        : [],
       updateOn: 'change',
     });
 
@@ -91,14 +93,21 @@ export class FinancialProductFormComponent implements OnInit, OnDestroy {
     ]);
 
     const dateReleaseControl = new FormControl(
-      this.product?.date_release || '',
+      transformDateFormat(new Date(this.product?.date_release).toISOString()) ||
+        '',
       [Validators.required, dateValidator()]
     );
 
     const dateRevisionControl = new FormControl(
-      this.product?.date_revision || '',
+      transformDateFormat(
+        new Date(this.product?.date_revision).toISOString()
+      ) || '',
       [Validators.required]
     );
+
+    if (this.editMode) {
+      idControl.disable({ emitEvent: false, onlySelf: true });
+    }
 
     this.form = this.fb.group({
       id: idControl,
@@ -117,6 +126,7 @@ export class FinancialProductFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.editMode = this.product?.id ? true : false;
     this.resetForm();
   }
 

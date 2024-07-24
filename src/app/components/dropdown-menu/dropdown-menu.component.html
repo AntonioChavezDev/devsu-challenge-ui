@@ -1,0 +1,8 @@
+<div class="dropdown" [class.open]="isOpen">
+  <button class="dropdown-toggle" (click)="toggleDropdown()">⋮</button>
+  <div class="dropdown-menu">
+    <button class="dropdown-menu--item" (click)="onEditClick.emit()">
+      Edit
+    </button>
+  </div>
+</div>

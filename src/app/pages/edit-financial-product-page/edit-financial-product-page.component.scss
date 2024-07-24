@@ -1,0 +1,34 @@
+@import "../../../styles/variables";
+
+.edit-financial-product-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 16%;
+  background-color: $section-color;
+
+  h1 {
+    text-align: center;
+  }
+
+  & > * {
+    width: 100%;
+  }
+
+  &--title {
+    font-size: 2rem;
+  }
+
+  &--feedback {
+    text-align: center;
+  }
+
+  &--actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & > * {
+      margin: 4rem 4rem 0 4rem;
+    }
+  }
+}

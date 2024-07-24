@@ -1,5 +1,8 @@
 <div class="custom-table--wrapper">
-  <table class="custom-table--content">
+  @if(isLoading){
+  <span>Loading...</span>
+  }@else {
+  <table class="custom-table--content" *ngIf="!isLoading">
     <thead>
       <tr>
         <th *ngFor="let column of columns">
@@ -8,6 +11,9 @@
           <span class="custom-table--content-info">&#8505;</span>
           }
         </th>
+        @if(config.enableActions){
+        <th></th>
+        }
       </tr>
     </thead>
 
@@ -28,6 +34,13 @@
           <td>{{ row[column.property] }}</td>
           }
         </ng-container>
+        @if(config.enableActions){
+        <td>
+          <app-dropdown-menu
+            (onEditClick)="onEditFinancialProduct(row)"
+          ></app-dropdown-menu>
+        </td>
+        }
       </tr>
       } @else {
       <tr>
@@ -43,4 +56,5 @@
     (pageChange)="onPageChange($event)"
     (itemsPerPageChange)="onItemsPerPageChange($event)"
   ></app-paginator>
+  }
 </div>

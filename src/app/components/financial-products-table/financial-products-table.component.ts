@@ -26,6 +26,7 @@ export class FinancialProductsTableComponent implements OnInit {
   error: any;
   config: TableConfig = {
     enablePaginator: true,
+    enableActions: true,
   };
   columns: Column[] = [
     {
@@ -83,18 +84,8 @@ export class FinancialProductsTableComponent implements OnInit {
     this.isLoading = true;
     this.error = '';
     this.financialProductService.getFinancialProducts().subscribe({
-      next: (value) => {
-        //this.financialProducts = value;
-        for (let index = 0; index < 30; index++) {
-          this.financialProducts.push({
-            date_release: new Date(),
-            date_revision: new Date(),
-            description: 'Lorem Ipsum',
-            id: '12345',
-            logo: 'https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg',
-            name: `Credit Card ${index + 1}`,
-          });
-        }
+      next: (value: any) => {
+        this.financialProducts = value['data'] as FinancialProduct[];
         this.rows = this.financialProducts;
       },
       error: () => {
@@ -104,6 +95,12 @@ export class FinancialProductsTableComponent implements OnInit {
       complete: () => {
         this.isLoading = false;
       },
+    });
+  }
+
+  onEditProductPressed(financialProduct: FinancialProduct) {
+    this.router.navigate([MY_ROUTES.EDIT_FINANCIAL_PRODUCT], {
+      queryParams: { data: JSON.stringify(financialProduct) },
     });
   }
 
