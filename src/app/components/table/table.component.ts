@@ -29,6 +29,7 @@ export class TableComponent implements OnInit, OnChanges {
   @Input() rows: any[] = [];
   @Input() isLoading: boolean = false;
   @Output() onEditClick = new EventEmitter<FinancialProduct>();
+  @Output() onDeleteClick = new EventEmitter<FinancialProduct>();
 
   paginatedItems: any[] = [];
   currentPage: number = 1;
@@ -36,6 +37,10 @@ export class TableComponent implements OnInit, OnChanges {
 
   onEditFinancialProduct(financialProduct: FinancialProduct) {
     this.onEditClick.emit(financialProduct);
+  }
+
+  onDeleteFinancialProduct(financialProduct: FinancialProduct) {
+    this.onDeleteClick.emit(financialProduct);
   }
 
   getDate(date: String | Date | object): Date {

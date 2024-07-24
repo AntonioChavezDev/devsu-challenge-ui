@@ -2,7 +2,10 @@
   <button class="dropdown-toggle" (click)="toggleDropdown()">⋮</button>
   <div class="dropdown-menu">
     <button class="dropdown-menu--item" (click)="onEditClick.emit()">
-      Edit
+      Editar
+    </button>
+    <button class="dropdown-menu--item" (click)="onDeleteClick.emit()">
+      Eliminar
     </button>
   </div>
 </div>
