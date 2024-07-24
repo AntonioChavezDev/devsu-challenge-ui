@@ -1,0 +1,9 @@
+<div class="form-error" *ngIf="control?.touched && control?.invalid">
+  <p
+    *ngFor="let error of getErrors()"
+    class="form-error--text"
+    role="alert"
+  >
+    {{ errors[error] }}
+  </p>
+</div>

@@ -1,0 +1,18 @@
+@import "../../../styles/variables";
+
+.financial-product-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  &--group {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 calc(50% - 10px);
+    gap: 10px;
+
+    &-field {
+      padding: 1rem;
+    }
+  }
+}

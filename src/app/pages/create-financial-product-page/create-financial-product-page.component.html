@@ -1,0 +1,33 @@
+<section class="create-financial-product-page">
+  <h1 class="create-financial-product-page--title">Formulario de Registro</h1>
+
+  <div class="separator"></div>
+
+  <div class="create-financial-product-page--form">
+    <app-financial-product-form
+      #financialProductForm
+    ></app-financial-product-form>
+  </div>
+
+  <span class="create-financial-product-page--feedback">{{ message }}</span>
+
+  <div class="create-financial-product-page--actions">
+    <app-button
+      (onClick)="financialProductForm.resetForm()"
+      type="text"
+      [text]="'Reiniciar'"
+      [buttonRole]="'secondary'"
+    ></app-button>
+
+    <app-button
+      (onClick)="createProduct()"
+      type="submit"
+      [text]="'Enviar'"
+      [buttonRole]="'primary'"
+      [disabled]="financialProductForm.form.invalid"
+      [isLoading]="
+        isLoading || financialProductForm.form.controls['id'].pending
+      "
+    ></app-button>
+  </div>
+</section>

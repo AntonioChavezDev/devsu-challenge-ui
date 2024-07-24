@@ -1,0 +1,26 @@
+@import "../../../styles/variables";
+
+.button {
+  padding: 1.2rem;
+  border: 0;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  cursor: pointer;
+
+  &-primary {
+    background-color: $primary-color;
+  }
+
+  &-secondary {
+    background-color: $secondary-color;
+  }
+
+  &-standard {
+    background-color: $gray-color;
+    color: whitesmoke;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}

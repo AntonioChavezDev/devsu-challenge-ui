@@ -1,0 +1,8 @@
+<button
+  [type]="type"
+  [ngClass]="classes"
+  (click)="onClick.emit()"
+  [disabled]="disabled || isLoading"
+>
+  {{ isLoading ? "..." : text }}
+</button>
