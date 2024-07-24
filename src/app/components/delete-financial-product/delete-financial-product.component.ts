@@ -23,14 +23,15 @@ export class DeleteFinancialProductComponent {
   }
 
   deleteProduct() {
-    this.isLoading = true;
     if (this.productToDelete) {
+      this.isLoading = true;
       this.financialProductsService.delete(this.productToDelete.id).subscribe({
-        next: () => (this.message = 'Registro eliminado con éxito!'),
+        next: () => {
+          this.message = 'Registro eliminado con éxito!';
+          this.isLoading = false;
+        },
         error: () => {
           this.message = 'Ha ocurrido un error';
-        },
-        complete: () => {
           this.isLoading = false;
         },
       });
